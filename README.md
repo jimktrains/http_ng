@@ -77,9 +77,9 @@ not using characters that aren't visually identical or similar in many
 fonts. Both of these can (and will) aid debugging for those cases in
 which the hash must be read and interacted with by a human.
 
-Deprecate Etag in favour of If-(Not-)Hash and Content-Hash tag.
-If-(Not-)Hash would use the same semantics as the Content-Hash taga.One
-downside, however, is that some ETag implementations are done in a way
+Deprecate `Etag` in favour of `If-Not-Hash` and `Content-Hash` tag.
+`If-Not-Hash` would use the same semantics as the Content-Hash taga.One
+downside, however, is that some `ETag` implementations are done in a way
 such that the contents of the file don't need to be read (e.g.: Apache).
 The internal representation could be used in a dictionary as the key to
 the hash, so it may not be a terrible change or overhead.
