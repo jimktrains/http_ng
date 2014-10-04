@@ -84,7 +84,7 @@ such that the contents of the file don't need to be read (e.g.: Apache).
 The internal representation could be used in a dictionary as the key to
 the hash, so it may not be a terrible change or overhead.
 
-Sendng less information
+Sending less information
 -----------------------
 
 Many headers, such as `Date`, `Via`, `User-Agent`, `DNT`, `Pragma`,
