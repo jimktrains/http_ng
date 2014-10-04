@@ -8,6 +8,7 @@ re-inventing TCP at Layer 7:
 
 * Better authentication
 * More secure caching
+* Better methods to find alternate downloads locations
 * Keeping the protocol simple
 * Making each request contain less information about the sender
 * Improved Metadata
@@ -83,6 +84,30 @@ downside, however, is that some `ETag` implementations are done in a way
 such that the contents of the file don't need to be read (e.g.: Apache).
 The internal representation could be used in a dictionary as the key to
 the hash, so it may not be a terrible change or overhead.
+
+Alternate Download methods
+--------------------------
+
+The `Magnet` header would contain a [magnet
+link](https://en.wikipedia.org/wiki/Magnet_URI_scheme) for the file.  I
+could see this being used in conjunction with the `Content-Range` header
+to give information on how to use
+[BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) to download the
+remainder of a file, say a CD or DVD image. Some browsers, namely
+[Opera](http://help.opera.com/Windows/9.00/en/bittorrent.html), already
+have clients that would support BitTorrent and could support this type
+of header with minimal retooling. If the client would like to download
+the entire file, it can resubmit the request with a `Range` header for the
+rest of the file. The Server could respond with the rest of the file or
+a redirect to a mirror. `Mirror` headers served with a `Magnet` header
+should be checked before resubmitting the request.
+
+The `Mirror` header would contain the URL of a mirror of the resource.
+This header could be repeated multiple times in order to specify
+multiple mirrors.  In a similar manner to the `Magnet` header, if the
+server would prefer the User Agent use mirrors, then it could respond
+with a `Content-Range` header so that it doesn't have to deliver the
+entire resource.
 
 Sending less information
 -----------------------
