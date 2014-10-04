@@ -1,8 +1,8 @@
 Next-Generation HTTP
 ====================
 
-With the [HTTP2](http://http2.github.io/) solving problems that are not
-viewed by many in the web-development community as nessecary. I believe
+With [HTTP2](http://http2.github.io/) solving problems that are not
+viewed by many in the web-development community as nessecary, I believe
 that there are issues more important to the future of the web than
 re-inventing TCP at Layer 7:
 
