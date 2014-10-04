@@ -95,4 +95,20 @@ enable tracking of users.
 Improved Metadata
 -----------------
 
-Supporting the Dublin Core Metadata as header-information.
+Supporting some basic metadata, maybe starting with the [Dublin
+Core](http://en.wikipedia.org/wiki/Dublin_Core) fields. Metadata as
+header-information. Perhaps in the following format: Metadata: `field`
+`value`. The headers would be cumulative, and not overwrite previous
+headers with a different field.
+
+example:
+
+```
+Metadata: Title HTTP NG Specification
+Metadata: Creator HTTP NG WG
+Metadata: Description This document aims to create an update to \
+          HTTP 1.1 that is also backwards compatible, and without \
+          the complexity of "HTTP2"
+Metadata: Language en-US
+Metadata: Rights GNU FDL
+```
