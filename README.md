@@ -64,7 +64,7 @@ Regardless, the standard should have a standard way of giving this basic
 information.
 
 Deprecate `Content-MD5` in favour of a `Content-Hash` header whose value
-would be a space delimited "algo hash". I feel that this is a more
+would be a key/value pair of algorithm name and hash. I feel that this is a more
 future-proof and flexible header. This header could be specified
 multiple times, each with a different algorithm. However, it also opens
 the chance that a server could give a client a hash algorithm that it is
