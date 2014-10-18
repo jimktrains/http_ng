@@ -59,6 +59,11 @@ WWW-Authenticate: Mutual realm="a realm" endpoint="srp://example.com:81"
 This endpoint would perform the SRP transaction leaving both the server and
 user-agent with the session key-username pair.
 
+While this veers even further from HTTP, the authentication could conclude
+with the server passing a token (e.g. customer session key-expire-hmac
+token, or a [JWT](http://jwt.io/)).  Otherwise the session key should be
+used as-is, preferably in an `Authentication: Token` header.
+
 Secure Caching
 --------------
 
