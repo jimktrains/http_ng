@@ -49,9 +49,11 @@ Secure Caching
 --------------
 
 [Content-Signature](https://tools.ietf.org/html/draft-burke-content-signature-00)
-with the signing key being the TLS/SSL key. This could aid in secure
-caching, mirroring, and proxying. This will help ensure that proxies and
-mirrors are serving up a trustworthy copy of the resource.
+(with the concatentation problem fixed, i.e. concatenated fields for the
+sig could be prefixed with a fixed-length length-of-field)(also,
+signatures should be able to be in other encodings than hex) could aid
+in secure caching, mirroring, and proxying. This will help ensure that
+proxies and mirrors are serving up a trustworthy copy of the resource.
 
 Whatever standard is used for the `Content-Signature` header, there should
 be a way to link to the signing key, so that it can be downloaded. This
