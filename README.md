@@ -72,60 +72,61 @@ unfamiliar with and hence can't use. I would suggest that hash
 algorithms of md5, sha1, sha224, sha256, sha384, sha512, and whirlpool
 (or perhaps only sha512?) be standardly supported and that if a server
 decides to send a function not on this list, it should additionally send
-one from the list as well.
-
-The encoding of the hash could be hex, base32, or base64 which are
-fairly well-known standards. I, however, prefer base58 because I like
-some of the reasonings found in the header for it in the bitcoin
-project.
-
-```
-// Why base-58 instead of standard base-64 encoding?
-// -- Don't want 0OIl [ed. note: zero, oh, capital i, lowercase ell]
-//   characters that look the same in some fonts and could be used to
-//   create visually identical looking account numbers.
-// -- A string with non-alphanumeric characters is not as easily accepted
-//    as an account number.
-// -- E-mail usually won't line-break if there's no punctuation to break at
-// -- Doubleclicking selects the whole number as one word if it's all
-//    alphanumeric.
-```
-
-Specifically, not using characters that would be reserved in URLs and
-not using characters that aren't visually identical or similar in many
-fonts. Both of these can (and will) aid debugging for those cases in
-which the hash must be read and interacted with by a human.
+at least one from the list as well.
 
 Deprecate `Etag` in favour of `If-Not-Hash` and `Content-Hash` tag.
 `If-Not-Hash` would use the same semantics as the Content-Hash taga.One
 downside, however, is that some `ETag` implementations are done in a way
 such that the contents of the file don't need to be read (e.g.: Apache).
-The internal representation could be used in a dictionary as the key to
-the hash, so it may not be a terrible change or overhead.
 
 Alternate Download methods
 --------------------------
 
-The `Magnet` header would contain a [magnet
-link](https://en.wikipedia.org/wiki/Magnet_URI_scheme) for the file.  I
-could see this being used in conjunction with the `Content-Range` header
-to give information on how to use
-[BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) to download the
-remainder of a file, say a CD or DVD image. Some browsers, namely
-[Opera](http://help.opera.com/Windows/9.00/en/bittorrent.html), already
-have clients that would support BitTorrent and could support this type
-of header with minimal retooling. If the client would like to download
-the entire file, it can resubmit the request with a `Range` header for the
-rest of the file. The Server could respond with the rest of the file or
-a redirect to a mirror. `Mirror` headers served with a `Magnet` header
-should be checked before resubmitting the request.
+The `Mirror` header would contain the type (via the URI protocol) 
+and URL of a mirror for the resource. This header could be repeated
+multiple times in order to specify multiple mirrors and download methods
+(e.g. http, bittorent (via magnent uris), ftp, or jigdo).
 
-The `Mirror` header would contain the URL of a mirror of the resource.
-This header could be repeated multiple times in order to specify
-multiple mirrors.  In a similar manner to the `Magnet` header, if the
-server would prefer the User Agent use mirrors, then it could respond
-with a `Content-Range` header so that it doesn't have to deliver the
-entire resource.
+If a server would prefer a client use a mirror, requests without a 
+`Range` can respond with a correct `Content-Length` and a `Content-Range`
+of 0, and one or more `Mirror` headers. Servers are encouraged to also send
+`Content-Hash` and `Content-Signature` headers as well. If the client
+would like to download the entire file, it can resubmit the request with
+a `Range` header for the rest of the file. The Server could respond with
+the rest of the file or a redirect to an HTTP mirror.
+
+
+(In theory magnet urls could be entirly/mostly filled in from the other
+headers.)
+
+Example:
+
+```
+GET /hello HTTP/1.3
+Host: example.com
+
+HTTP/1.3 200 OK
+Content-Hash: algorithm=sha256;
+              hash=2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824,
+              algorithm=sha1;
+              hash=aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d,
+              algorithm=md5;
+              hash=5d41402abc4b2a76b9719d911017c592
+Content-Signature: id=https://example.com/signing_key.pub;
+                   algorithm=ecdsa:secp384r1;
+                   signature=3064023068985da8ab2485f30dc0ca1cd04ae330221c04755acb716d0175
+                             8ba3e17225e130ea6bf0e0910ec045f19b7c53dd234602302dc29d827c5c
+                             f518efe551d639b32644ebcc452197ed907933d6fdd8e565ac5a52366fbf
+                             c8b1786713937d1db363058c
+Content-Length: 5
+Content-Rang: bytes 0
+Content-Type: text/plain
+Mirror: magnet:&xl=5&dn=hello&xt=urn:md5:5d41402abc4b2a76b9719d911017c592
+Mirror: https://mirror-a.example.com/hello
+Mirror: ftp://mirror-b.example.com/hello
+Mirror: jigdo://example.com/hello.jigdo
+
+```
 
 Sending less information
 -----------------------
