@@ -2,7 +2,7 @@ Next-Generation HTTP
 ====================
 
 With [HTTP2](http://http2.github.io/) solving problems that are not
-viewed by many in the web-development community as nessecary, I believe
+viewed by many in the web-development community as necessary, I believe
 that there are issues more important to the future of the web than
 re-inventing TCP at Layer 7:
 
@@ -14,7 +14,7 @@ re-inventing TCP at Layer 7:
 * Improved Metadata
 
 These issues, and not serving super heavy-weight pages slightly faster,
-should be the focus of improviments made to one of the most widely used
+should be the focus of improvements made to one of the most widely used
 protocols on the internet.
 
 Better Authentication
@@ -26,7 +26,7 @@ including the IETF draft from 2012 for
 would be a good starting point. Mutual Authentication doesn't require
 the user to transmit their credentials over the wire. Combined with
 support from HTML and TLS (via TLS-SRP) to provide a better interface
-with fewer round-trips, respectivly, could provide a user-experince
+with fewer round-trips, respectively, could provide a user-experince
 similar to what is currently found, while increasing security.
 
 Additionally, having browsers support a standard could allow `method="mutual-auth`
@@ -63,7 +63,7 @@ Secure Caching
 --------------
 
 [Content-Signature](https://tools.ietf.org/html/draft-burke-content-signature-00)
-(with the concatentation problem fixed, i.e. concatenated fields for the
+(with the concatenation problem fixed, i.e. concatenated fields for the
 sig could be prefixed with a fixed-length length-of-field)(also,
 signatures should be able to be in other encodings than hex) could aid
 in secure caching, mirroring, and proxying. This will help ensure that
@@ -99,7 +99,7 @@ Alternate Download methods
 The `Mirror` header would contain the type (via the URI schema specifier)
 and URL of a mirror for the resource. This header could contain a list
 in order to specify multiple mirrors and download methods
-(e.g. http, bittorent (via magnent uris), ftp, or jigdo).
+(e.g. http, bittorent (via magnet uris), ftp, or jigdo).
 
 If a server would prefer a client use a mirror, requests without a
 `Range` can respond with a correct `Content-Length` and a `Content-Range`
@@ -109,7 +109,7 @@ would like to download the entire file, it can resubmit the request with
 a `Range` header for the rest of the file. The Server could respond with
 the rest of the file or a redirect to an HTTP mirror.
 
-(In theory magnet urls could be entirly/mostly filled in from the other
+(In theory magnet urls could be entirely/mostly filled in from the other
 headers.)
 
 Example:
@@ -158,7 +158,7 @@ Supporting some basic metadata, maybe starting with the [Dublin
 Core](http://en.wikipedia.org/wiki/Dublin_Core) fields. Metadata as
 header-information.
 
-Example (note the backsapce-escaped comma in the description):
+Example (note the backslash-escaped comma in the description):
 
 ```
 Metadata: title=HTTP NG Specification,
