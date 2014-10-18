@@ -64,6 +64,9 @@ with the server passing a token (e.g. customer session key-expire-hmac
 token, or a [JWT](http://jwt.io/)).  Otherwise the session key should be
 used as-is, preferably in an `Authentication: Token` header.
 
+Now may also be a good time to consider
+[SASL](http://tools.ietf.org/html/rfc4422) compatibility as well.
+
 Secure Caching
 --------------
 
