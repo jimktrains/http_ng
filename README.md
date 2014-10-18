@@ -156,6 +156,15 @@ Many headers, such as `Date`, `Via`, `User-Agent`, `DNT`, `Pragma`,
 techniques such as [PanOptiClick](https://panopticlick.eff.org/) that
 enable tracking of users.
 
+MIME-Multi-part
+---------------
+
+In addition to sending fewer headers, an server so designed could send
+MIME-multipart messages that would contain, for instance, images,
+scripts, and stylesheets with the main content body.  One issue with
+this is knowing if the clinent currently requires these assets or not
+(e.g. because they are cached).
+
 Improved Metadata
 -----------------
 
