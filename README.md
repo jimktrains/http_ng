@@ -29,6 +29,22 @@ support from HTML and TLS (via TLS-SRP) to provide a better interface
 with fewer round-trips, respectivly, could provide a user-experince
 similar to what is currently found, while increasing security.
 
+Additionally, having browsers support a standard could allow `method="mutual-auth`
+for form elements to avoid one of the main issues with HTTP auth, namely
+that people consider it ugly and unusable.
+
+Another issue that plauges HTTP auth is the inability to logout.  There
+should be a clearly-defined manner in which the user-agent can be asked to
+drop its credentials by either the server or client.
+
+However, part of me feels that this should be pushed into another
+protocol, perhaps just using TLS-SRP and building the infrastructure in
+both the browser and server to support this. However, that wouldn't be
+in the purvue of an HTTP WG. Whether a stateful authentication exchange
+has a place in HTTP is to be determined. I feel that by placing it as a
+lowerst-common-denominator it will become more wide-spread which may
+outweigh some of the technical ugliness it would have?
+
 Secure Caching
 --------------
 
