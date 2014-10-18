@@ -20,7 +20,7 @@ protocols on the internet.
 Better Authentication
 ---------------------
 
-[Mutual Authentication](http://en.wikipedia.org/wiki/Mutual_authentication), 
+[Mutual Authentication](http://en.wikipedia.org/wiki/Mutual_authentication),
 including the IETF draft from 2012 for
 [HTTP-Based Mutual Authentication](https://tools.ietf.org/id/draft-oiwa-http-mutualauth-12.txt),
 would be a good starting point. Mutual Authentication doesn't require
@@ -82,12 +82,12 @@ such that the contents of the file don't need to be read (e.g.: Apache).
 Alternate Download methods
 --------------------------
 
-The `Mirror` header would contain the type (via the URI protocol) 
+The `Mirror` header would contain the type (via the URI protocol)
 and URL of a mirror for the resource. This header could be repeated
 multiple times in order to specify multiple mirrors and download methods
 (e.g. http, bittorent (via magnent uris), ftp, or jigdo).
 
-If a server would prefer a client use a mirror, requests without a 
+If a server would prefer a client use a mirror, requests without a
 `Range` can respond with a correct `Content-Length` and a `Content-Range`
 of 0, and one or more `Mirror` headers. Servers are encouraged to also send
 `Content-Hash` and `Content-Signature` headers as well. If the client
@@ -141,7 +141,7 @@ Improved Metadata
 
 Supporting some basic metadata, maybe starting with the [Dublin
 Core](http://en.wikipedia.org/wiki/Dublin_Core) fields. Metadata as
-header-information. 
+header-information.
 
 Example (note the backsapce-escaped comma in the description):
 
@@ -149,7 +149,7 @@ Example (note the backsapce-escaped comma in the description):
 Metadata: title=HTTP NG Specification,
           creator=HTTP NG WG,
           description=This document aims to create an update to
-                      HTTP 1.1 that is also backwards compatible\054 and without 
+                      HTTP 1.1 that is also backwards compatible\054 and without
                       the complexity of "HTTP2",
           rights=CC-By-SA,
           rights-url=http://creativecommons.org/licenses/by-sa/3.0/
