@@ -141,18 +141,16 @@ Improved Metadata
 
 Supporting some basic metadata, maybe starting with the [Dublin
 Core](http://en.wikipedia.org/wiki/Dublin_Core) fields. Metadata as
-header-information. Perhaps in the following format: Metadata: `field`
-`value`. The headers would be cumulative, and not overwrite previous
-headers with a different field.
+header-information. 
 
-example:
+Example (note the backsapce-escaped comma in the description):
 
 ```
-Metadata: Title HTTP NG Specification
-Metadata: Creator HTTP NG WG
-Metadata: Description This document aims to create an update to \
-          HTTP 1.1 that is also backwards compatible, and without \
-          the complexity of "HTTP2"
-Metadata: Language en-US
-Metadata: Rights GNU FDL
+Metadata: title=HTTP NG Specification,
+          creator=HTTP NG WG,
+          description=This document aims to create an update to
+                      HTTP 1.1 that is also backwards compatible\054 and without 
+                      the complexity of "HTTP2",
+          rights=CC-By-SA,
+          rights-url=http://creativecommons.org/licenses/by-sa/3.0/
 ```
