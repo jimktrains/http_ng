@@ -104,7 +104,7 @@ Example:
 GET /hello HTTP/1.3
 Host: example.com
 
-HTTP/1.3 200 OK
+HTTP/1.3 206 Partial Content
 Content-Hash: algorithm=sha256;
               hash=2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824,
               algorithm=sha1;
@@ -120,9 +120,11 @@ Content-Signature: id=https://example.com/signing_key.pub;
 Content-Length: 5
 Content-Rang: bytes 0
 Content-Type: text/plain
+Last-Modified: Tue, 01 Jan 1833 00:00:00 GMT
 Mirror: magnet:&xl=5&dn=hello&xt=urn:md5:5d41402abc4b2a76b9719d911017c592,
         https://mirror-a.example.com/hello,
-        ftp://mirror-b.example.com/hello,
+        https://mirror-b.example.com/hello,
+        ftp://mirror-c.example.com/hello,
         jigdo://example.com/hello.jigdo
 
 ```
