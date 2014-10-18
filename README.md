@@ -82,9 +82,9 @@ such that the contents of the file don't need to be read (e.g.: Apache).
 Alternate Download methods
 --------------------------
 
-The `Mirror` header would contain the type (via the URI protocol)
-and URL of a mirror for the resource. This header could be repeated
-multiple times in order to specify multiple mirrors and download methods
+The `Mirror` header would contain the type (via the URI schema specifier)
+and URL of a mirror for the resource. This header could contain a list
+in order to specify multiple mirrors and download methods
 (e.g. http, bittorent (via magnent uris), ftp, or jigdo).
 
 If a server would prefer a client use a mirror, requests without a
@@ -94,7 +94,6 @@ of 0, and one or more `Mirror` headers. Servers are encouraged to also send
 would like to download the entire file, it can resubmit the request with
 a `Range` header for the rest of the file. The Server could respond with
 the rest of the file or a redirect to an HTTP mirror.
-
 
 (In theory magnet urls could be entirly/mostly filled in from the other
 headers.)
@@ -121,10 +120,10 @@ Content-Signature: id=https://example.com/signing_key.pub;
 Content-Length: 5
 Content-Rang: bytes 0
 Content-Type: text/plain
-Mirror: magnet:&xl=5&dn=hello&xt=urn:md5:5d41402abc4b2a76b9719d911017c592
-Mirror: https://mirror-a.example.com/hello
-Mirror: ftp://mirror-b.example.com/hello
-Mirror: jigdo://example.com/hello.jigdo
+Mirror: magnet:&xl=5&dn=hello&xt=urn:md5:5d41402abc4b2a76b9719d911017c592,
+        https://mirror-a.example.com/hello,
+        ftp://mirror-b.example.com/hello,
+        jigdo://example.com/hello.jigdo
 
 ```
 
