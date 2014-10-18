@@ -45,6 +45,20 @@ has a place in HTTP is to be determined. I feel that by placing it as a
 lowerst-common-denominator it will become more wide-spread which may
 outweigh some of the technical ugliness it would have?
 
+One possible method would be for the `WWW-Authenticate` header to provide
+an additional parameter as to where this service could be located. Example:
+
+```
+GET /protected HTTP/`.3
+Host: example.com
+
+HTTP/1.3 401 Authentication Required
+WWW-Authenticate: Mutual realm="a realm" endpoint="srp://example.com:81"
+```
+
+This endpoint would perform the SRP transaction leaving both the server and
+user-agent with the session key-username pair.
+
 Secure Caching
 --------------
 
