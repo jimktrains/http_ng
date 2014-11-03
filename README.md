@@ -155,9 +155,9 @@ Sending less information
 -----------------------
 
 Many headers, such as `Date`, `Via`, `User-Agent`, `DNT`, `Pragma`,
-`Server`, and `P3P` are useless and take up bandwidth. They also enable
-techniques such as [PanOptiClick](https://panopticlick.eff.org/) that
-enable tracking of users.
+`Server`, and `P3P` are useless and take up bandwidth. The client headers
+also enable techniques such as [PanOptiClick](https://panopticlick.eff.org/)
+that enable tracking of users.
 
 MIME-Multi-part
 ---------------
@@ -186,3 +186,10 @@ Metadata: title=HTTP NG Specification,
           rights=CC-By-SA,
           rights-url=http://creativecommons.org/licenses/by-sa/3.0/
 ```
+
+Join the Discussion
+-------------------
+
+Feel free to fork and make pull requests for ideas.
+
+We're also on freenode @ #http_ng ([WebChat](http://webchat.freenode.net/?channels=http_ng))
