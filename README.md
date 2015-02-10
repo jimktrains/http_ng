@@ -96,7 +96,7 @@ algorithms of md5, sha1, sha224, sha256, sha384, sha512, and whirlpool
 decides to send a function not on this list, it should additionally send
 at least one from the list as well.
 
-Deprecate `Etag` in favour of `If-Not-Hash` and `Content-Hash` tag.
+Advocate for the use of `If-Not-Hash` and `Content-Hash` tag.
 `If-Not-Hash` would use the same semantics as the Content-Hash taga.One
 downside, however, is that some `ETag` implementations are done in a way
 such that the contents of the file don't need to be read (e.g.: Apache).
@@ -166,7 +166,8 @@ In addition to sending fewer headers, an server so designed could send
 MIME-multipart messages that would contain, for instance, images,
 scripts, and stylesheets with the main content body.  One issue with
 this is knowing if the clinent currently requires these assets or not
-(e.g. because they are cached).
+(e.g. because they are cached). Instead, the next request to the server could
+contain multiple resources and their corrsponding `ETag` or `Content-Hash`.
 
 Improved Metadata
 -----------------
